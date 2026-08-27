@@ -1,0 +1,100 @@
+<title>syslog anomaly detection - devialog, a knowledge/anomaly/signature-based syslog intrusion detection system</title>
+<meta name=keywords content="syslog,anomaly,detection,ids,intrusion,jeff,yestrumskas">
+<meta name=description content="devialog is a behavior/anomaly-based syslog intrusion detection system which detects unknown attacks via anomalies in syslog. It can generate signatures for ease of management, act upon anomalies in a predefined fashion or perform as a standard log parser.">
+
+<center>
+
+<p>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF>
+	<tr align=center colspan=1>
+		<th colspan=1>
+			<font face=helvetica,arial size=+1>
+				devialog - Syslog Anomaly Detection
+		</td>
+	</tr>
+</table>
+<p>
+<table cellpadding=0 cellspacing=1 border=0 bgcolor=#000000 width=100%><tr><td>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF width=100%>
+	<tr colspan=1 align=center>
+		<td>
+			<font face=helvetica,arial>
+			<a href="index.html">Main</a> &middot
+			<a href="quickstart.html">Quick Start</a> &middot
+			<a href="faq.html">F.A.Q</a> &middot
+			<a href="download.html">Download</a> &middot
+                        <a href=https://github.com/jeffyestrumskas/devialog>GitHub Project Page</a>
+		</td>
+	</tr>
+</table>
+</td></tr></table>
+</center>
+<p>
+
+<table cellpadding=1 cellspacing=1 border=0 width=100%>
+<tr><td>
+<font face=helvetica,arial>
+<b>devialog Quick Start Guide</b>
+
+<ol>
+	<li>As root, install the required Perl modules (if needed)</li>
+	<br>
+	<font face=courier size=-1># perl -MCPAN -e 'install Mail::Sendmail'</font><br>
+	<font face=courier size=-1># perl -MCPAN -e 'install File::Tail'</font>
+	<p>
+	<li>It is suggested to run devialog as a non-root user, self contained in the users home directory.  Therefore, as root, add a user, give the user permissions to read the syslog files, create and set permissions on anomalies file and unzip the devialog-current.tgz tarball to the newly added home directory</li>
+	<br>
+	<font face=courier size=-1># adduser devialog</font><br>
+	<font face=courier size=-1># chown devialog /var/log/messages</font><br>
+	<font face=courier size=-1># chmod 400 /var/log/messages</font><br>
+	<font face=courier size=-1># touch /var/log/anomalies</font><br>
+	<font face=courier size=-1># chown devialog /var/log/anomalies</font><br>
+	<font face=courier size=-1># chmod 600 /var/log/anomalies</font><br>
+	<font face=courier size=-1># su - devialog</font><br>
+	<font face=courier size=-1>$ tar xvfz /path/to/devialog-current.tgz</font><br>
+	<font face=courier size=-1>$ cd devialog-current/</font><br>
+	<p>
+
+	<li>If devialog is to be run on a central syslog repository, ensure syslog is presently running and configured to startup in listening mode with the "-r" switch.  <b>It is highly recommended to configure a host to be a central syslog repository if you intend on monitoring many systems.</b>
+	<p>
+	<font face=courier size=-1># syslogd -r</font><br>
+	<p>
+
+<li>Open devialog.conf in your favorite editor.  This file is well commented and contains nearly all configuration settings.  Please go through the file in its entirety and change the email addresses, mail servers, etc.</li>
+<p>
+
+<li>Run devialogsig.pl - Copy the following for a standard Linux install.  This will need to be run for each logfile to be monitored that is configured in devialog.conf.  For example,
+<p>
+<font face=courier size=-1>./devialogsig.pl -l /var/log/messages -c signatures.pl -t syslog -C</font>
+<p>
+* devialog looks for at least a day (ideally a week) of syslog to truly generate a useful signature base.
+<p>
+
+<li>Edit signatures.pl.  Remove the signatures you want to be considered anomalies and have the action(s) defined in the devialog.conf AnomalyAction directive performed.  For example, you may want to have all logins or useradd syslog events emailed to the address defined in devialog.conf.  Simply remove the signature matching the login or useradd from the signature file (if the signature exists).  The action(s) as configured in devialog.conf will then be taken, whether that is emailing, writing to a file, etc..  Note that signatures.pl is never executed; it contains a .pl extension for syntax hilighting purposes.</li>
+<p>
+
+<li>Run devialog.</li>
+<p>
+<font face=courier size=-1>./devialog.pl -c devialog.conf</font>
+<p>
+<li>Become root and configure the system to start devialog upon boot.  Add the following line to /etc/rc.d/rc.local (or elsewhere depending on your OS)</li>
+<br>
+<font face=courier size=-1>su - devialog -c "/path/to/devialog.pl -c /path/to/devialog.conf"</font><br>
+</ol>
+</td></tr>
+</table>
+<p>
+<hr>
+<table cellpadding=1 cellspacing=1 border=0 width=100%>
+<tr>
+	<td align=left>
+		<font face=helvetica,arial>
+			For any questions/comments, contact the devialog author: Jeff Yestrumskas (OSCP, CISM, CISSP) - <a href=mailto:jeff@yestrumskas.com>jeff@yestrumskas.com</a>
+		</font>
+	</td>
+	<td align=right>
+	</td>
+</tr>
+</table>
+<font face=courier,chicago size=-1><i>devialog - Copyright 2002-2008 <a href=mailto:jeff@yestrumskas.com>Jeff Yestrumskas</a>
+</center>

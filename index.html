@@ -1,0 +1,79 @@
+<body bgcolor="#FFFFFF" link="#000000" alink="#000000" vlink="#000000">
+<title>syslog anomaly detection - devialog, a knowledge/anomaly/signature-based syslog intrusion detection system</title>
+<meta name=keywords content="syslog,anomaly,detection,ids,intrusion,jeff,yestrumskas">
+<meta name=description content="devialog is a behavior/anomaly-based syslog intrusion detection system which detects unknown attacks via anomalies in syslog. It can generate signatures for ease of management, act upon anomalies in a predefined fashion or perform as a standard log parser.">
+
+<center>
+
+<p>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF>
+	<tr align=center colspan=1>
+		<th colspan=1>
+			<font face=helvetica,arial size=+1>
+				devialog - Syslog Anomaly Detection
+		</td>
+	</tr>
+</table>
+<p>
+<table cellpadding=0 cellspacing=1 border=0 bgcolor=#000000 width=100%><tr><td>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF width=100%>
+	<tr colspan=1 align=center>
+		<td>
+			<font face=helvetica,arial>
+			<a href="index.html">Main</a> &middot
+			<a href="quickstart.html">Quick Start</a> &middot
+			<a href="faq.html">F.A.Q</a> &middot
+			<a href="download.html">Download</a> &middot
+                        <a href=https://github.com/jeffyestrumskas/devialog>GitHub Project Page</a>
+		</td>
+	</tr>
+</table>
+</td></tr></table>
+</center>
+<p>
+
+<font face=helvetica,arial><b>Current version: 0.9.0</b> - <i>if you are running a version earlier than 0.9.0, please upgrade</i></font>
+<table cellpadding=1 cellspacing=1 border=0 width=90%>
+	<tr align=left>
+		<td>
+			<font face=helvetica,arial>
+			<ul>
+			<b>devialog...</b>
+			<li>Is a behavior/anomaly/signature-based syslog intrusion detection system
+			<li>Detects new unknown attacks via anomalies in syslog
+			<li>Fits comfortably in heterogeneous Unix/Linux/*BSD environments at the core of a central syslog server
+			<li>Generates its own signatures
+			<li>Can email anomalies with included generated signatures in to administrators to ignore future similar events
+		</ul>
+		</td>
+	</tr>
+	<tr align=left width=100%>
+	  <td width=100%>
+			<font face=helvetica,arial>
+			<p>
+Present log-based IDS:<p>				 
+Nearly all present log-based intrusion detection systems operate using a pre-defined known signature base, usually painstakingly created by hand. They can work well if the creator knows exactly all error and informational messages the software on a system(s) will write to syslog. Most overworked administrators wish there was an easier way to handle system logfiles in a sane, time-saving fashion.  Present log-based intrusion detection systems have difficulty in detecting new attacks.
+<p>
+How devialog Differs:<p>
+devialog makes syslog parsing far less of a chore than it previously has been. It is functionally the inverse of standard log monitoring software. devialog, by default, reports on what is not know in its signature base, i.e. anomalous. This type of intrusion detection system is considered behavior-based, or anomaly detection.  Reporting can be in the form of an email for each anomalous log, or an email for all the logs sent within a pre-defined time window. devialog can also execute commands, or simply write all anomalies to a file for periodical review.
+<p>
+Signature Creation:<p>
+For log-based anomaly detection to operate effectively, one must create an extremely large signature base. With an included utility, devialogsig, the signatures are created automatically.  Future signature additions are as simple as a cut and paste from the alert email.
+		</td>
+	</tr>
+</table>
+<p>
+<hr>
+<table cellpadding=1 cellspacing=1 border=0 width=100%>
+<tr>
+	<td align=left>
+		<font face=helvetica,arial>
+			For any questions/comments, contact the devialog author: Jeff Yestrumskas (OSCP, CISM, CISSP) - <a href=mailto:jeff@yestrumskas.com>jeff@yestrumskas.com</a>
+		</font>
+	</td>
+	<td align=right>
+	</td>
+</tr>
+</table>
+<font face=courier,chicago size=-1><i>devialog - Copyright 2002-2008 <a href=mailto:jeff@yestrumskas.com>Jeff Yestrumskas</a>
+</center>

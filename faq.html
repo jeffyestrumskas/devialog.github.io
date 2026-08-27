@@ -1,0 +1,70 @@
+<title>syslog anomaly detection - devialog, a knowledge/anomaly/signature-based syslog intrusion detection system</title>
+<meta name=keywords content="syslog,anomaly,detection,ids,intrusion,jeff,yestrumskas">
+<meta name=description content="devialog is a behavior/anomaly-based syslog intrusion detection system which detects unknown attacks via anomalies in syslog. It can generate signatures for ease of management, act upon anomalies in a predefined fashion or perform as a standard log parser.">
+
+<center>
+
+<p>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF>
+	<tr align=center colspan=1>
+		<th colspan=1>
+			<font face=helvetica,arial size=+1>
+				devialog - Syslog Anomaly Detection
+		</td>
+	</tr>
+</table>
+<p>
+<table cellpadding=0 cellspacing=1 border=0 bgcolor=#000000 width=100%><tr><td>
+<table cellpadding=1 cellspacing=1 border=0 bgcolor=#FFFFFF width=100%>
+	<tr colspan=1 align=center>
+		<td>
+			<font face=helvetica,arial>
+			<a href="index.html">Main</a> &middot
+			<a href="quickstart.html">Quick Start</a> &middot
+			<a href="faq.html">F.A.Q</a> &middot
+			<a href="download.html">Download</a> &middot
+                        <a href=https://github.com/jeffyestrumskas/devialog>GitHub Project Page</a>
+		</td>
+	</tr>
+</table>
+</td></tr></table>
+</center>
+<p>
+
+<font face=helvetica,arial>
+<b>What kind of performance can I expect?</b><p>
+On an 800mhz intel system, with a signature base of roughly 1500, expect the ability to parse over 200 syslog lines per second.  Some of the larger syslog servers I've come across do not come close to this capacity.  If your syslog server does, please let me know.</p>
+<b>Why does the file containing signatures have an extension of .pl?  Do I need execute this file?</b><p>
+The signatures file contains the .pl extension to help out editors with proper syntax highlighting.  Since the signatures are in perl hash format, syntax highlighting will help out those unfamiliar with perl and ensure there are no errors within the format.  You do not need to execute the signatures file.
+</p>
+<b>How do I verify the signatures are in the proper format?</b><p>
+Aside from a manual inspection with a text editor that has a syntax highlighting function, the following command ensures they are in the proper format:<p>
+<font face=courier,chicago size=-1>$ perl -c signatures.pl<br>
+signatures.pl syntax OK
+</font>
+<p>
+You should receive this result provided there are no errors within the signature file.
+<p>
+<b>What does it mean when signatures.pl does not return a true value?</b></p>
+<font face=courier,chicago size=-1> signatures.pl did not return a true value at ./devialog.pl line 66, &LT;CONF&gt; line 96.</font></b><p>
+This is a result of a blank or nonexistent signatures.pl file.  This must be created per the quick start guide.
+</p>
+
+</font>
+</table>
+</td></tr></table>
+<p>
+<hr>
+<table cellpadding=1 cellspacing=1 border=0 width=100%>
+<tr>
+	<td align=left>
+		<font face=helvetica,arial>
+			For any questions/comments, contact the devialog author: Jeff Yestrumskas (OSCP, CISM, CISSP) - <a href=mailto:jeff@yestrumskas.com>jeff@yestrumskas.com</a>
+		</font>
+	</td>
+	<td align=right>
+	</td>
+</tr>
+</table>
+<font face=courier,chicago size=-1><i>devialog - Copyright 2002-2008 <a href=mailto:jeff@yestrumskas.com>Jeff Yestrumskas</a>
+</center>
